@@ -26,16 +26,10 @@ class hoge(object):
         f.write("255\n")
         for i in range(1,int(self.h)):
             for j in range(0,int(self.w)):
-                print int(self.w)*i-j
-                #rospy.sleep(0.01)
-                if self.m[int(self.w)*i-j] == 0:
-                 self.m[int(self.w)*i-j] = "255"
-                if self.m[int(self.w)*i-j] == -1:
-                    self.m[int(self.w)*i-j] = "0"
-                f.write(str(self.m[int(self.w)*i-j])+"\n")
-        #while not rospy.is_shutdown():
-        #    print self.m[1]
-        #    rospy.sleep(1)
+                xy = int(self.w) * i - j
+                if self.m[xy] == 0:  self.m[xy] = "255"
+                if self.m[xy] == -1: self.m[xy] = "0"
+                f.write(str(self.m[xy])+"\n")
         f.close()
 
 if __name__ == '__main__':
